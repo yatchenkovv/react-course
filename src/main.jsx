@@ -13,8 +13,8 @@ reactRoot.render(
           <h3>Меню</h3>
           {
             <ul>
-              {resturant.menu.map((item) => (
-                <li key={item.id}> {item.name} </li>
+              {resturant.menu.map((dish) => (
+                <li key={dish.id}> {dish.name} </li>
               ))}
             </ul>
           }
