@@ -4,6 +4,6 @@ import { restaurants } from "../../../materials/mock";
 
 export const App = () => (
   <Layout>
-    <RestaurantsPage restaurants={restaurants}></RestaurantsPage>
+    <RestaurantsPage restaurants={restaurants} />
   </Layout>
 );

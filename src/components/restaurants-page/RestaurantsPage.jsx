@@ -9,7 +9,6 @@ export const RestaurantsPage = ({ restaurants }) => {
   const selectedRestaurant = restaurants.find(
     (restaurant) => restaurant.id === selectedRestaurantId
   );
-  console.log("rest = ", selectedRestaurant);
   return (
     <div>
       <ul
