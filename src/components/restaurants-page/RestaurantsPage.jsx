@@ -23,12 +23,13 @@ export const RestaurantsPage = ({ restaurants }) => {
           <li
             key={restaurant.id}
             style={{
+              cursor: "pointer",
               padding: "10px",
               border: "solid 1px silver",
               backgroundColor:
                 restaurant.id === selectedRestaurantId ? "silver" : "white",
             }}
-            onClick={setSelectedRestaurantId.bind(this, restaurant.id)}
+            onClick={() => setSelectedRestaurantId(restaurant.id)}
           >
             <h3>{restaurant.name}</h3>
           </li>

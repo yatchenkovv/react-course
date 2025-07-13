@@ -1,16 +1,7 @@
-import { useState } from "react";
+import { useCounter } from "./use-counter";
 
 export const Counter = () => {
-  const [value, setValue] = useState(0);
-
-  const increment = () => {
-    if (value >= 5) return;
-    setValue(value + 1);
-  };
-  const decrement = () => {
-    if (value <= 0) return;
-    setValue(value - 1);
-  };
+  const { value, increment, decrement } = useCounter({ min: 0, max: 5 });
 
   return (
     <div>
