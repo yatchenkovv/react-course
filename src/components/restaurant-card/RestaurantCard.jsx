@@ -1,5 +1,6 @@
 import { Menu } from "../menu/Menu";
 import { Reviews } from "../reviews/Reviews";
+import { ReviewForm } from "../review-form/ReviewForm";
 
 export const RestaurantCard = ({ restaurant }) => {
   return (
@@ -15,6 +16,9 @@ export const RestaurantCard = ({ restaurant }) => {
       <br />
       <h4>Отзывы</h4>
       <Reviews reviews={restaurant.reviews} />
+      <br />
+      <h4>Форма отзыва</h4>
+      <ReviewForm />
     </div>
   );
 };

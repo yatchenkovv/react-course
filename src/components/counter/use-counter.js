@@ -12,9 +12,14 @@ export const useCounter = ({ min = 0, max = 5 } = {}) => {
         setValue(value - 1);
     };
 
+    const reset = () => {
+        setValue(0);
+    }
+
     return {
         value,
         increment,
         decrement,
+        reset,
     }
 }
