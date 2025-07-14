@@ -13,6 +13,6 @@ export const ProgressBar = () => {
         height: "7px",
         backgroundColor: "rgba(22, 214, 48, 0.87)",
       }}
-    ></div>
+    />
   );
 };

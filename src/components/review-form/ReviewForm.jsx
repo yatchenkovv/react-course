@@ -1,5 +1,7 @@
 import { useReducer } from "react";
 import { ReviewRatingCounter } from "../review-rating-counter/ReviewRatingCounter";
+import { useCounter } from "../counter/use-counter";
+import { useEffect } from "react";
 
 const DEFAULT_STATE = {
   name: "",
@@ -28,14 +30,21 @@ const reducer = (state, { type, payload }) => {
   }
 };
 
-let resetCounterFn = () => {};
-
 export const ReviewForm = () => {
+  const { value, increment, decrement, resetCounter } = useCounter({
+    min: 0,
+    max: 5,
+  });
   const [form, dispatch] = useReducer(reducer, DEFAULT_STATE);
   const { name, text } = form;
 
+  useEffect(() => {
+    dispatch({ type: SET_RATING_ACTION, payload: value });
+  }, [value]);
+
   return (
     <form
+      onSubmit={(e) => e.preventDefault()}
       style={{
         display: "flex",
         gap: "5px",
@@ -66,15 +75,13 @@ export const ReviewForm = () => {
       <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
         <label style={{ fontWeight: "bold" }}>Рейтинг</label>
         <ReviewRatingCounter
-          onGetResetFnCounter={(resetFn) => (resetCounterFn = resetFn)}
-          onChangeRatingValue={(payload) =>
-            dispatch({ type: SET_RATING_ACTION, payload })
-          }
+          onIncrement={increment}
+          onDecrement={decrement}
+          rating={value}
         />
       </div>
 
       <button
-        type="button"
         style={{
           marginTop: "10px",
           width: "150px",
@@ -85,7 +92,7 @@ export const ReviewForm = () => {
           cursor: "pointer",
         }}
         onClick={() => {
-          resetCounterFn();
+          resetCounter();
           dispatch({ type: SET_DEFAULT_STATE, payload: undefined });
         }}
       >
