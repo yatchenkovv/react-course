@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 
-const getPercentScroll = () => {
-    return (Math.floor(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100) + "%"
+const getProgressScroll = () => {
+    return (Math.floor(document.documentElement.scrollTop /
+        (document.documentElement.scrollHeight - document.documentElement.clientHeight)
+    ) * 100) + "%";
 }
 
 export const useProgressBar = () => {
@@ -9,7 +11,7 @@ export const useProgressBar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setProgress(getPercentScroll())
+            setProgress(getProgressScroll())
         }
 
         window.addEventListener("scroll", handleScroll);
