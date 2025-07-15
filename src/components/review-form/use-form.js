@@ -2,7 +2,7 @@ import { useReducer } from "react";
 
 const DEFAULT_STATE = {
   name: "",
-  text: "",
+  review: "",
   rating: 0,
 };
 
@@ -15,16 +15,15 @@ const CLEAR_ACTION = "CLEAR_ACTION";
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case SET_NAME_ACTION:
-      return { ...DEFAULT_STATE, name: payload };
+      return { ...state, name: payload };
     case SET_REVIEW_ACTION:
-      return { ...state, text: payload };
-    case CLEAR_ACTION:
-      return { ...DEFAULT_STATE, rating: 0 };
+      return { ...state, review: payload };
     case INCREMENT_RATING_ACTION:
       return { ...state, rating: Math.min(state.rating + 1, 5) };
     case DECREMENT_RATING_ACTION:
       return { ...state, rating: Math.max(state.rating - 1, 0) };
-
+    case CLEAR_ACTION:
+      return { ...DEFAULT_STATE };
     default:
       return state;
   }

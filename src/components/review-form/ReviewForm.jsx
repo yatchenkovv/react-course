@@ -1,12 +1,6 @@
 import { Counter } from "../counter/Counter";
 import { useForm } from "./use-form";
 
-const DEFAULT_STATE = {
-  name: "",
-  text: "",
-  rating: 0,
-};
-
 export const ReviewForm = () => {
   const { form, setName, setReview, incrementRating, decrementRating, clear } =
     useForm();
@@ -32,7 +26,7 @@ export const ReviewForm = () => {
         <label style={{ fontWeight: "bold" }}>Отзыв</label>
         <input
           type="text"
-          value={form.text}
+          value={form.review}
           onChange={(event) => setReview(event.target.value)}
         />
       </div>
