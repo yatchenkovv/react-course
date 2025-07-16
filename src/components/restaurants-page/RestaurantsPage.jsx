@@ -10,7 +10,7 @@ export const RestaurantsPage = ({ restaurants }) => {
     (restaurant) => restaurant.id === selectedRestaurantId
   );
   return (
-    <div>
+    <>
       <ul
         style={{
           display: "flex",
@@ -37,6 +37,6 @@ export const RestaurantsPage = ({ restaurants }) => {
       </ul>
       <hr />
       <RestaurantCard restaurant={selectedRestaurant} />
-    </div>
+    </>
   );
 };

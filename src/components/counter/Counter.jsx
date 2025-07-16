@@ -1,13 +1,13 @@
-import { useCounter } from "./use-counter";
-
-export const Counter = () => {
-  const { value, increment, decrement } = useCounter({ min: 0, max: 5 });
-
+export const Counter = ({ onClickDecrement, onClickIncrement, value }) => {
   return (
     <div>
-      <button onClick={decrement}>-</button>
+      <button type="button" onClick={onClickDecrement}>
+        -
+      </button>
       <span>{value}</span>
-      <button onClick={increment}>+</button>
+      <button type="button" onClick={onClickIncrement}>
+        +
+      </button>
     </div>
   );
 };
