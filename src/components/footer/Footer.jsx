@@ -1,13 +1,9 @@
-export const Footer = () => (
-  <footer
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      padding: "10px",
-      border: "solid 1px silver",
-    }}
-  >
-    <h5>(C) Footer</h5>
-  </footer>
-);
+import styles from "./Footer.module.css";
+
+export const Footer = () => {
+  return (
+    <footer className={styles.footer}>
+      <h5>(C) Footer</h5>
+    </footer>
+  );
+};

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { RestaurantCard } from "../restaurant-card/RestaurantCard";
+import styles from "./Restaurants-page.module.css";
+import classNames from "classnames";
 
 export const RestaurantsPage = ({ restaurants }) => {
   const [selectedRestaurantId, setSelectedRestaurantId] = useState(
@@ -11,24 +13,14 @@ export const RestaurantsPage = ({ restaurants }) => {
   );
   return (
     <>
-      <ul
-        style={{
-          display: "flex",
-          gap: "15px",
-          listStyle: "none",
-          margin: "15px",
-        }}
-      >
+      <ul className={styles.list}>
         {restaurants.map((restaurant) => (
           <li
+            className={classNames({
+              [styles.restaurantCard]: true,
+              [styles.activeCard]: restaurant.id === selectedRestaurantId,
+            })}
             key={restaurant.id}
-            style={{
-              cursor: "pointer",
-              padding: "10px",
-              border: "solid 1px silver",
-              backgroundColor:
-                restaurant.id === selectedRestaurantId ? "silver" : "white",
-            }}
             onClick={() => setSelectedRestaurantId(restaurant.id)}
           >
             <h3>{restaurant.name}</h3>
