@@ -7,7 +7,7 @@ export const Button = ({ title, onClickHandle, theme }) => {
       type="button"
       className={classNames({
         [styles.defaultBtn]: theme === "default",
-        [styles.hilightBtn]: theme === "hilight",
+        [styles.highlightBtn]: theme === "highlight",
       })}
       onClick={onClickHandle}
     >

@@ -10,7 +10,7 @@ export const ReviewForm = () => {
   return (
     <form onSubmit={(e) => e.preventDefault()} className={styles.container}>
       <div className={styles.controlWrapper}>
-        <label className={styles.hilightText}>Имя</label>
+        <label className={styles.highlightText}>Имя</label>
         <input
           type="text"
           value={form.name}
@@ -18,7 +18,7 @@ export const ReviewForm = () => {
         />
       </div>
       <div className={styles.controlWrapper}>
-        <label className={styles.hilightText}>Отзыв</label>
+        <label className={styles.highlightText}>Отзыв</label>
         <input
           type="text"
           value={form.review}
@@ -27,7 +27,7 @@ export const ReviewForm = () => {
       </div>
 
       <div className={styles.controlWrapper}>
-        <label className={styles.hilightText}>Рейтинг</label>
+        <label className={styles.highlightText}>Рейтинг</label>
         <Counter
           onClickIncrement={incrementRating}
           onClickDecrement={decrementRating}
@@ -35,7 +35,7 @@ export const ReviewForm = () => {
         />
       </div>
       <br />
-      <Button title={"Очистить"} theme={"hilight"} onClickHandle={clear} />
+      <Button title={"Очистить"} theme={"highlight"} onClickHandle={clear} />
       <br />
     </form>
   );

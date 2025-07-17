@@ -16,8 +16,7 @@ export const RestaurantsPage = ({ restaurants }) => {
       <ul className={styles.list}>
         {restaurants.map((restaurant) => (
           <li
-            className={classNames({
-              [styles.restaurantCard]: true,
+            className={classNames(styles.restaurantCard, {
               [styles.activeCard]: restaurant.id === selectedRestaurantId,
             })}
             key={restaurant.id}
