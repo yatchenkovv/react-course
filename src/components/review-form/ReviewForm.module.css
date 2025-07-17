@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.controlWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.highlightText {
+    font-weight: bold;
+}

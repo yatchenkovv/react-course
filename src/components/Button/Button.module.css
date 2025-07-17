@@ -1,0 +1,17 @@
+.highlightBtn {
+    width: 150px;
+    padding: 10px;
+    background-color: #F44336;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.defaultBtn {
+    width: 150px;
+    padding: 10px;
+    background-color: #81C784;
+    color: #000;
+    border: none;
+    cursor: pointer;
+}

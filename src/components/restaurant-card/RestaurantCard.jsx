@@ -1,14 +1,11 @@
 import { Menu } from "../menu/Menu";
 import { Reviews } from "../reviews/Reviews";
 import { ReviewForm } from "../review-form/ReviewForm";
+import style from "./Restaurant-card.module.css";
 
 export const RestaurantCard = ({ restaurant }) => {
   return (
-    <div
-      style={{
-        margin: "0 15px",
-      }}
-    >
+    <div className={style.card}>
       <h3 style={{ color: "green" }}>{restaurant.name}</h3>
 
       <h4>Меню</h4>
