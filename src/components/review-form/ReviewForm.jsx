@@ -35,7 +35,7 @@ export const ReviewForm = () => {
         />
       </div>
       <br />
-      <Button title={"Очистить"} theme={"highlight"} onClickHandle={clear} />
+      <Button title={"Очистить"} onClickHandle={clear} />
       <br />
     </form>
   );

@@ -1,0 +1,9 @@
+.btnTheme {
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    background: #4CAF50;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+}

@@ -1,17 +1,16 @@
-.highlightBtn {
+.button {
     width: 150px;
     padding: 10px;
-    background-color: #F44336;
-    color: #fff;
     border: none;
     cursor: pointer;
 }
 
-.defaultBtn {
-    width: 150px;
-    padding: 10px;
-    background-color: #81C784;
-    color: #000;
-    border: none;
-    cursor: pointer;
+.dark  {
+    background-color: rgb(13, 78, 109);
+    color:#c9c2c2;
+}
+
+.light {
+    background-color: rgb(19, 233, 161);
+    color:#856969;
 }
