@@ -9,7 +9,7 @@ export const Menu = ({ menu }) => {
       {menu.map((dish) => (
         <li key={dish.id}>
           {dish.name} ({dish.ingredients.join(", ")}){dish.price} &#x20bd;{" "}
-          {userName ? <DishCounter /> : <></>}
+          {userName ? <DishCounter /> : null}
         </li>
       ))}
     </ul>

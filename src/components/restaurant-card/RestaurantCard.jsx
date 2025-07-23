@@ -19,10 +19,10 @@ export const RestaurantCard = ({ restaurant }) => {
       <Reviews reviews={restaurant.reviews} />
       <br />
       {userName && (
-        <Fragment>
+        <>
           <h4>Форма отзыва</h4>
           <ReviewForm />
-        </Fragment>
+        </>
       )}
     </div>
   );

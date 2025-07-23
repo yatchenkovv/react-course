@@ -2,6 +2,7 @@ import { Layout } from "../layout/Layout";
 import { RestaurantsPage } from "../restaurants-page/RestaurantsPage";
 import { restaurants } from "../../../materials/mock";
 import "./app.css";
+import "./reset.css";
 import { ThemeContextProvider } from "../theme-context/ThemeContextProvider";
 import { UserContextProvider } from "../user-context/UserContextProvider";
 
