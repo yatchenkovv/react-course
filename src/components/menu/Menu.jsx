@@ -1,15 +1,11 @@
-import { DishCounter } from "../dish-counter/DishCounter";
-import { useUser } from "../user-context/use-user";
+import { MenuItem } from "./MenuItem";
 
-export const Menu = ({ menu }) => {
-  const { userName } = useUser();
-
+export const Menu = ({ menuIds }) => {
   return (
     <ul>
-      {menu.map((dish) => (
-        <li key={dish.id}>
-          {dish.name} ({dish.ingredients.join(", ")}){dish.price} &#x20bd;{" "}
-          {userName ? <DishCounter /> : null}
+      {menuIds.map((id) => (
+        <li key={id}>
+          <MenuItem id={id} />
         </li>
       ))}
     </ul>

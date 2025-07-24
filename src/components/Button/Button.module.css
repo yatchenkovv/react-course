@@ -14,3 +14,15 @@
     background-color: rgb(19, 233, 161);
     color:#856969;
 }
+
+.button:disabled.dark {
+    background-color: rgb(136, 136, 181);
+    color:rgb(32, 30, 30);
+    font-weight: 500;
+}
+
+.button:disabled.light {
+    background-color: rgb(45, 139, 146);
+    color:rgb(32, 30, 30);
+    font-weight: 500;
+}
