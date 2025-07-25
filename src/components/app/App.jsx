@@ -1,17 +1,20 @@
 import { Layout } from "../layout/Layout";
-import { RestaurantsPage } from "../restaurants-page/RestaurantsPage";
-import { restaurants } from "../../../materials/mock";
 import "./app.css";
 import "./reset.css";
 import { ThemeContextProvider } from "../theme-context/ThemeContextProvider";
 import { UserContextProvider } from "../user-context/UserContextProvider";
+import { Provider } from "react-redux";
+import { store } from "../../redux/store";
+import { RestaurantsPageContainer } from "../restaurants-page/RestaurantsPageContainer";
 
 export const App = () => (
-  <ThemeContextProvider>
-    <UserContextProvider>
-      <Layout>
-        <RestaurantsPage restaurants={restaurants} />
-      </Layout>
-    </UserContextProvider>
-  </ThemeContextProvider>
+  <Provider store={store}>
+    <ThemeContextProvider>
+      <UserContextProvider>
+        <Layout>
+          <RestaurantsPageContainer></RestaurantsPageContainer>
+        </Layout>
+      </UserContextProvider>
+    </ThemeContextProvider>
+  </Provider>
 );

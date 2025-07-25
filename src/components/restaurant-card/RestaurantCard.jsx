@@ -3,7 +3,6 @@ import { Reviews } from "../reviews/Reviews";
 import { ReviewForm } from "../review-form/ReviewForm";
 import style from "./Restaurant-card.module.css";
 import { useUser } from "../user-context/use-user";
-import { Fragment } from "react";
 
 export const RestaurantCard = ({ restaurant }) => {
   const { userName } = useUser();
@@ -13,10 +12,10 @@ export const RestaurantCard = ({ restaurant }) => {
       <h3 style={{ color: "green" }}>{restaurant.name}</h3>
 
       <h4>Меню</h4>
-      <Menu menu={restaurant.menu} />
+      <Menu menuIds={restaurant.menu} />
       <br />
       <h4>Отзывы</h4>
-      <Reviews reviews={restaurant.reviews} />
+      <Reviews reviewsIds={restaurant.reviews} />
       <br />
       {userName && (
         <>

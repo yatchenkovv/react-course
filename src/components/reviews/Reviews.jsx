@@ -1,9 +1,11 @@
-export const Reviews = ({ reviews }) => {
+import { ReviewItem } from "./ReviewItem";
+
+export const Reviews = ({ reviewsIds }) => {
   return (
-    <ul>
-      {reviews.map((review) => (
-        <li type="none" key={review.id}>
-          - <strong>{review.user}</strong>: {review.text}
+    <ul type="none">
+      {reviewsIds.map((id) => (
+        <li key={id}>
+          <ReviewItem id={id} />
         </li>
       ))}
     </ul>
