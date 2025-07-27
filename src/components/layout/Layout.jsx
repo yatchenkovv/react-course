@@ -3,14 +3,15 @@ import { Footer } from "../footer/Footer";
 import { ProgressBar } from "../progress-bar/ProgressBar";
 import { Cart } from "../cart/Cart";
 import { useUser } from "../user-context/use-user";
+import { Outlet } from "react-router";
 
-export const Layout = ({ children }) => {
+export const Layout = () => {
   const { userName } = useUser();
   return (
     <>
       <ProgressBar />
       <Header />
-      <main>{children}</main>
+      <main>{<Outlet />}</main>
       {userName ? <Cart /> : null}
       <Footer />
     </>
