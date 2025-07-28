@@ -1,11 +1,14 @@
 .linkBtnActive {
-    background-color: blueviolet!important;
+    background-color: blueviolet;
+}
+
+.linkBtnNotActive {
+    background-color: rgb(38, 162, 108);
 }
 
 .linkBtn {
     text-decoration: none;
     border: none;
-    background-color: rgb(38, 162, 108);
     padding: 25px;
     color:azure;
     border-radius: 10px;

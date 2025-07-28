@@ -7,7 +7,10 @@ export const Link = ({ children, to }) => {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        classNames(styles.linkBtn, { [styles.linkBtnActive]: isActive })
+        classNames(styles.linkBtn, {
+          [styles.linkBtnActive]: isActive,
+          [styles.linkBtnNotActive]: !isActive,
+        })
       }
     >
       {children}

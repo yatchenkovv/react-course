@@ -9,9 +9,9 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router";
 import { RestaurantPage } from "../../pages/restaurant-page/RestaurantPage";
 import { HomePage } from "../../pages/home-page/HomePage";
 import { RestaurantsPage } from "../restaurants-page/RestaurantsPage";
-import { RestaurantMenu } from "../restaurant-menu/RestaurantMenu";
-import { RestaurantReviews } from "../restaurant-reviews/RestaurantReviews";
 import { DishPage } from "../../pages/dish-page/DishPage";
+import { RestaurantMenuContainer } from "../restaurant-menu/RestaurantMenuContainer";
+import { RestaurantReviewsContainer } from "../restaurant-reviews/RestaurantReviewsContainer";
 
 export const App = () => (
   <Provider store={store}>
@@ -27,8 +27,11 @@ export const App = () => (
                 element={<RestaurantPage />}
               >
                 <Route index element={<Navigate to="menu" />} />
-                <Route path="menu" element={<RestaurantMenu />} />
-                <Route path="reviews" element={<RestaurantReviews />} />
+                <Route path="menu" element={<RestaurantMenuContainer />} />
+                <Route
+                  path="reviews"
+                  element={<RestaurantReviewsContainer />}
+                />
               </Route>
             </Route>
             <Route path="/dish/:dishId" element={<DishPage />} />
