@@ -11,5 +11,9 @@ export const RestaurantReviewsContainer = () => {
     selectRestaurantById(state, restaurantId)
   );
 
-  return <RestaurantReviews userName={userName} restaurant={restaurant} />;
+  return (
+    restaurant && (
+      <RestaurantReviews userName={userName} restaurant={restaurant} />
+    )
+  );
 };

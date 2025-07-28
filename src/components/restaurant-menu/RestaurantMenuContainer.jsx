@@ -10,5 +10,5 @@ export const RestaurantMenuContainer = () => {
     selectRestaurantById(state, restaurantId)
   );
 
-  return <RestaurantMenu restaurant={restaurant} />;
+  return restaurant && <RestaurantMenu restaurant={restaurant} />;
 };
