@@ -11,7 +11,7 @@ import { HomePage } from "../../pages/home-page/HomePage";
 import { RestaurantsPage } from "../restaurants-page/RestaurantsPage";
 import { DishPage } from "../../pages/dish-page/DishPage";
 import { RestaurantReviewsContainer } from "../restaurant-reviews/RestaurantReviewsContainer";
-import { RestaurantMenu } from "../restaurant-menu/RestaurantMenu";
+import { Menu } from "../menu/Menu";
 
 export const App = () => (
   <Provider store={store}>
@@ -27,7 +27,7 @@ export const App = () => (
                 element={<RestaurantPage />}
               >
                 <Route index element={<Navigate to="menu" />} />
-                <Route path="menu" element={<RestaurantMenu />} />
+                <Route path="menu" element={<Menu showCounter={false} />} />
                 <Route
                   path="reviews"
                   element={<RestaurantReviewsContainer />}
