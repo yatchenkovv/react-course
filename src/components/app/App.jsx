@@ -10,8 +10,8 @@ import { RestaurantPage } from "../../pages/restaurant-page/RestaurantPage";
 import { HomePage } from "../../pages/home-page/HomePage";
 import { RestaurantsPage } from "../restaurants-page/RestaurantsPage";
 import { DishPage } from "../../pages/dish-page/DishPage";
-import { RestaurantMenuContainer } from "../restaurant-menu/RestaurantMenuContainer";
 import { RestaurantReviewsContainer } from "../restaurant-reviews/RestaurantReviewsContainer";
+import { RestaurantMenu } from "../restaurant-menu/RestaurantMenu";
 
 export const App = () => (
   <Provider store={store}>
@@ -27,7 +27,7 @@ export const App = () => (
                 element={<RestaurantPage />}
               >
                 <Route index element={<Navigate to="menu" />} />
-                <Route path="menu" element={<RestaurantMenuContainer />} />
+                <Route path="menu" element={<RestaurantMenu />} />
                 <Route
                   path="reviews"
                   element={<RestaurantReviewsContainer />}

@@ -1,5 +1,4 @@
 import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
-import { Button } from "../Button/Button";
 import { useSelector } from "react-redux";
 import { Link } from "../link/Link";
 
