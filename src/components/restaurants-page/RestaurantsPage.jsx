@@ -1,27 +1,16 @@
-import { useState } from "react";
 import { Tabs } from "../tabs/Tabs";
 import { RestaurantTabContainer } from "../restaurant-tab/restaurant-tab-container";
-import { RestaurantCardContainer } from "../restaurant-card/RestaurantCardContainer";
-
-export const RestaurantsPage = ({ restaurantsIds }) => {
-  const [selectedRestaurantId, setSelectedRestaurantId] = useState(
-    restaurantsIds[0]
-  );
-
+import { useSelector } from "react-redux";
+import { selectRestaurantsIds } from "../../redux/entities/restaurants/slice";
+export const RestaurantsPage = () => {
+  const restaurantsIds = useSelector(selectRestaurantsIds);
   return (
     <>
       <Tabs>
         {restaurantsIds.map((id) => (
-          <RestaurantTabContainer
-            key={id}
-            restaurantId={id}
-            onClick={() => setSelectedRestaurantId(id)}
-            disabled={id === selectedRestaurantId}
-          />
+          <RestaurantTabContainer key={id} restaurantId={id} />
         ))}
       </Tabs>
-      <hr />
-      <RestaurantCardContainer id={selectedRestaurantId} />
     </>
   );
 };

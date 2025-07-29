@@ -1,0 +1,21 @@
+.linkBtnActive {
+    background-color: blueviolet;
+}
+
+.linkBtnNotActive {
+    background-color: rgb(38, 162, 108);
+}
+
+.linkBtn {
+    text-decoration: none;
+    border: none;
+    padding: 25px;
+    color:azure;
+    border-radius: 10px;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.linkBtn:hover {
+    cursor: pointer;
+}
