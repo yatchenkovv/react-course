@@ -3,6 +3,9 @@ import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/entities/restaurants/slice.js";
 import { useUser } from "../user-context/use-user.js";
 import { RestaurantReviews } from "./RestaurantReviews.jsx";
+import { useRequest } from "../../redux/hooks/use-request.js";
+import { getReviewsById } from "../../redux/entities/reviews/get-reviews-by-restaurant-id.js";
+import { IDLE, PENDING } from "../../constants/request-status.js";
 
 export const RestaurantReviewsContainer = () => {
   const { restaurantId } = useParams();
@@ -10,6 +13,12 @@ export const RestaurantReviewsContainer = () => {
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, restaurantId)
   );
+
+  const requestStatus = useRequest(getReviewsById, restaurantId);
+
+  if (requestStatus === IDLE || requestStatus === PENDING) {
+    return <h3>Загрузка отзывов...</h3>;
+  }
 
   return (
     restaurant && (

@@ -1,4 +1,4 @@
-import { Link as RouterLink, NavLink } from "react-router";
+import { NavLink } from "react-router";
 import styles from "./link.module.css";
 import classNames from "classnames";
 
