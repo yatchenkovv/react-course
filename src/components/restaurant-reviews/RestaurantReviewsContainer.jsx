@@ -13,7 +13,7 @@ import { useState } from "react";
 export const RestaurantReviewsContainer = () => {
   const [editableReview, setEditableReview] = useState(null);
   const { restaurantId } = useParams();
-  const { userName } = useUser();
+  const { userName, userId } = useUser();
   const responseUsers = useGetUsersQuery();
   const [addReview, { isLoading: isAddReviewLoading }] = useAddReviewMutation();
   const [editReview] = useEditReviewMutation();
@@ -23,7 +23,7 @@ export const RestaurantReviewsContainer = () => {
       restaurantId,
       review: {
         ...form,
-        userId: "a304959a-76c0-4b34-954a-b38dbf310360",
+        userId,
       },
     });
   };
