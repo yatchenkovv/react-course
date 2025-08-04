@@ -2,7 +2,7 @@ import { useReducer } from "react";
 
 const DEFAULT_STATE = {
   name: "",
-  review: "",
+  text: "",
   rating: 0,
 };
 
@@ -17,7 +17,7 @@ const reducer = (state, { type, payload }) => {
     case SET_NAME_ACTION:
       return { ...state, name: payload };
     case SET_REVIEW_ACTION:
-      return { ...state, review: payload };
+      return { ...state, text: payload };
     case INCREMENT_RATING_ACTION:
       return { ...state, rating: Math.min(state.rating + 1, 5) };
     case DECREMENT_RATING_ACTION:
