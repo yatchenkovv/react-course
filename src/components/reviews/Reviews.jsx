@@ -1,11 +1,14 @@
 import { ReviewItem } from "./ReviewItem";
+import { Button } from "../Button/Button";
 
-export const Reviews = ({ reviewsIds }) => {
+export const Reviews = ({ reviews, onEditHandle }) => {
   return (
     <ul type="none">
-      {reviewsIds.map((id) => (
+      {reviews.map(({ id, name, text }) => (
         <li key={id}>
-          <ReviewItem id={id} />
+          <ReviewItem name={name} text={text} />
+          <Button title={"Edit"} onClickHandle={() => onEditHandle(id)} />
+          <br />
         </li>
       ))}
     </ul>

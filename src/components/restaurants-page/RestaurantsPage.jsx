@@ -1,29 +1,36 @@
 import { Tabs } from "../tabs/Tabs";
-import { RestaurantTabContainer } from "../restaurant-tab/restaurant-tab-container";
-import { useSelector } from "react-redux";
-import { selectRestaurantsIds } from "../../redux/entities/restaurants/slice";
-import { getRestaurants } from "../../redux/entities/restaurants/get-restaurants";
-import { useRequest } from "../../redux/hooks/use-request";
-import { IDLE, PENDING } from "../../constants/request-status";
+import { useGetRestaurantsQuery } from "../../redux/services/api/api";
+import { Link } from "../link/Link";
 
 export const RestaurantsPage = () => {
-  const restaurantsIds = useSelector(selectRestaurantsIds);
-  const requestStatus = useRequest(getRestaurants);
+  const {
+    data,
+    isLoading: isRestaurantsLoading,
+    isError: isRestaurantsError,
+  } = useGetRestaurantsQuery();
 
-  if (requestStatus === IDLE || requestStatus === PENDING) {
+  if (isRestaurantsLoading) {
     return <h3>Загрузка ресторанов...</h3>;
   }
 
-  if (!restaurantsIds.length) {
+  if (isRestaurantsError) {
+    return <h3>ОШИБКА загрузки списка ресторанов</h3>;
+  }
+
+  if (!data.length) {
     return null;
   }
 
   return (
     <>
       <Tabs>
-        {restaurantsIds.map((id) => (
-          <RestaurantTabContainer key={id} restaurantId={id} />
-        ))}
+        {data.map(({ id, name }) => {
+          return (
+            <Link key={id} to={id}>
+              {name}
+            </Link>
+          );
+        })}
       </Tabs>
     </>
   );

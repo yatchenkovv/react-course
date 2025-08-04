@@ -1,35 +1,66 @@
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/entities/restaurants/slice.js";
 import { useUser } from "../user-context/use-user.js";
-import { RestaurantReviews } from "./RestaurantReviews.jsx";
-import { useRequest } from "../../redux/hooks/use-request.js";
-import { getReviewsById } from "../../redux/entities/reviews/get-reviews-by-restaurant-id.js";
-import { IDLE, PENDING } from "../../constants/request-status.js";
-import { getUsers } from "../../redux/entities/users/get-users.js";
+import { ReviewForm } from "../review-form/ReviewForm.jsx";
+import { Reviews } from "../reviews/Reviews.jsx";
+import {
+  useAddReviewMutation,
+  useEditReviewMutation,
+  useGetReviewsByRestaurantIdQuery,
+  useGetUsersQuery,
+} from "../../redux/services/api/api.js";
+import { useState } from "react";
 
 export const RestaurantReviewsContainer = () => {
+  const [editableReview, setEditableReview] = useState(null);
   const { restaurantId } = useParams();
-  const { userName } = useUser();
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
-  const requestUsersStatus = useRequest(getUsers);
+  const { userName, userId } = useUser();
+  const responseUsers = useGetUsersQuery();
+  const [addReview, { isLoading: isAddReviewLoading }] = useAddReviewMutation();
+  const [editReview] = useEditReviewMutation();
+  const responseReviews = useGetReviewsByRestaurantIdQuery(restaurantId);
+  const hadleAddReview = (form) => {
+    addReview({
+      restaurantId,
+      review: {
+        ...form,
+        userId,
+      },
+    });
+  };
+  const handleEditableReview = (form) => {
+    const { reviewId, text } = form;
+    editReview({
+      reviewId,
+      review: {
+        text,
+      },
+    });
+  };
 
-  const requestStatus = useRequest(getReviewsById, restaurantId);
+  const edit = (id) => {
+    const review = responseReviews.data.find((review) => review.id === id);
+    setEditableReview(review);
+  };
 
-  if (
-    requestStatus === IDLE ||
-    requestStatus === PENDING ||
-    requestUsersStatus === IDLE ||
-    requestUsersStatus === PENDING
-  ) {
+  if (responseUsers.isLoading || responseReviews.isLoading) {
     return <h3>Загрузка отзывов...</h3>;
   }
 
+  if (!responseReviews.data || !responseUsers.data) {
+    return null;
+  }
+
   return (
-    restaurant && (
-      <RestaurantReviews userName={userName} restaurant={restaurant} />
-    )
+    <div>
+      <Reviews reviews={responseReviews.data} onEditHandle={edit} />
+      {userName && (
+        <ReviewForm
+          editableReview={editableReview}
+          onSubmit={hadleAddReview}
+          onEditable={handleEditableReview}
+          disabledSubmit={isAddReviewLoading}
+        />
+      )}
+    </div>
   );
 };

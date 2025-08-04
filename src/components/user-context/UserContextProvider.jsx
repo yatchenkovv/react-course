@@ -13,6 +13,15 @@ export const UserContextProvider = ({ children }) => {
   };
 
   return (
-    <UserContext value={{ userName, login, logout }}>{children}</UserContext>
+    <UserContext
+      value={{
+        userName,
+        login,
+        logout,
+        userId: UserContext._currentValue.userId,
+      }}
+    >
+      {children}
+    </UserContext>
   );
 };

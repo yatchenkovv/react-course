@@ -1,11 +1,24 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
 import { RestaurantCard } from "./RestaurantCard";
-import { useRequest } from "../../redux/hooks/use-request";
-import { getRestaurantById } from "../../redux/entities/restaurants/get-restaurant-by-id";
+import { useGetRestaurantByIdQuery } from "../../redux/services/api/api";
+
 export const RestaurantCardContainer = ({ id }) => {
-  const selectedRestaurant = useSelector((state) =>
-    selectRestaurantById(state, id)
-  );
-  return <RestaurantCard restaurant={selectedRestaurant} />;
+  const {
+    data,
+    isLoading: isRestaurantLoading,
+    isError: isRestaurantError,
+  } = useGetRestaurantByIdQuery(id);
+
+  if (isRestaurantLoading) {
+    return <h3>Загрузка данных по ресторану...</h3>;
+  }
+
+  if (isRestaurantError) {
+    return <h3>ОШИБКА загрузки данных по ресторану</h3>;
+  }
+
+  if (!data) {
+    return null;
+  }
+
+  return <RestaurantCard restaurant={data} />;
 };

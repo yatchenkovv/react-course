@@ -9,6 +9,7 @@ export const Cart = () => {
   if (items.length === 0) {
     return <span className={styles.emptyCart}>В корзине пусто...</span>;
   }
+
   return (
     <div className={styles.cart}>
       <h3>Корзина</h3>
